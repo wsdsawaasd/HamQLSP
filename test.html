@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<label> Add product,FixName,Delete Name,Display <br/><br/><input type="text" id="product"></label>
+<br/>
+<br/>
+<input type="button" value="add Product" onclick="Add()">
+<input type="button" value="fixName" onclick="FixName()">
+<input type="button" value="Delete" onclick="Delete()">
+<input type="button" value="Display" onclick="display_arr()">
+<p id="result"></p>
+<script>
+
+    let product = [];
+    let x = 0;
+    function Add() {
+        product[x] = document.getElementById("product").value;
+        x++;
+        document.getElementById("product").value = ''
+    }
+
+    function FixName() {
+        for (let i = 0; i < product.length; i++) {
+            if (document.getElementById("product").value === product[i] || document.getElementById("product").value == i) {
+                product[i] = prompt("name product");
+                document.getElementById("product").value = ''
+            }
+        }
+    }
+
+    function Delete() {
+        for (let i = 0; i < product.length; i++) {
+            if (document.getElementById("product").value === product[i] || document.getElementById("product").value == i) {
+                product.splice(i, 1);
+                document.getElementById("product").value = ''
+            }
+        }
+    }
+
+    function display_arr() {
+        let e = "<table width = '80' border = '1'>";
+        for (let i = 0; i < product.length; i++) {
+            e = e + "<tr/>" + "<td/>" + i + " " + product[i];
+        }
+        document.getElementById("result").innerHTML = e
+    }
+</script>
+</body>
+</html>
